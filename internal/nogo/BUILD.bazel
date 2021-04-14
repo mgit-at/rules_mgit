@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "nogo")
+load(":nogo.bzl", "nogo_deps")
+
+nogo(
+    name = "nogo",
+    config = "@rules_mgit//internal/nogo:nogo.json",
+    visibility = ["//visibility:public"],
+    deps = nogo_deps(),
+)
