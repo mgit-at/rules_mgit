@@ -1,0 +1,46 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+load("@rules_pkg//:pkg.bzl", "pkg_deb", "pkg_tar")
+
+go_library(
+    name = "example_lib",
+    srcs = ["hello.go"],
+    importpath = "mgit.at/rules_go/internal/example",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "example",
+    embed = [":example_lib"],
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "example_test",
+    size = "small",
+    srcs = ["hello_test.go"],
+    embed = [":example_lib"],
+)
+
+pkg_tar(
+    name = "debian-data",
+    extension = "tar.gz",
+    files = {
+        ":example": "/usr/bin/example",
+    },
+    modes = {
+        "/usr/bin/example": "0755",
+    },
+)
+
+pkg_deb(
+    name = "debian",
+    architecture = "amd64",
+    built_using = "bazel",
+    data = ":debian-data",
+    description = "A simple example program to test rules_go.",
+    homepage = "https://mgit.at/",
+    maintainer = "Christoph Hack <chack@mgit.at>",
+    package = "example",
+    version = "1.0.0",
+    visibility = ["//visibility:public"],
+)
