@@ -1,3 +1,9 @@
+load("@rules_mgit//:def.bzl", "mgit_repo_rules")
+
+mgit_repo_rules(
+    go_prefix = "mgit.at/rules_go",
+)
+
 exports_files(
     glob([
         "*.bzl",
