@@ -11,5 +11,5 @@ func main() {
 }
 
 func printHello(w io.Writer) {
-	fmt.Fprintln(w, "Hello rules_go!")
+	fmt.Fprintln(w, "Hello rules_mgIT!")
 }

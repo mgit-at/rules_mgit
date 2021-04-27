@@ -1,6 +1,6 @@
 """deps.bzl contain a macro for declaring the repository dependencies."""
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 
 def rules_mgit_dependencies():
     """Declares external repositories required by rules_mgit."""
@@ -10,6 +10,9 @@ def rules_mgit_dependencies():
     _rules_proto()
     _rules_go()
     _bazel_gazelle()
+    _rules_docker()
+    _cacerts()
+    _tini()
 
 def _bazel_skylib():
     """bazel_skylib is a set of libraries thar are useful for writing Bazel rules."""
@@ -30,8 +33,11 @@ def _rules_python():
     _maybe(
         http_archive,
         name = "rules_python",
-        sha256 = "b6d46438523a3ec0f3cead544190ee13223a52f6a6765a29eae7b7cc24cc83a0",
-        url = "https://github.com/bazelbuild/rules_python/releases/download/0.1.0/rules_python-0.1.0.tar.gz",
+        sha256 = "778197e26c5fbeb07ac2a2c5ae405b30f6cb7ad1f5510ea6fdac03bded96cc6f",
+        urls = [
+            "https://mirror.bazel.build/github.com/bazelbuild/rules_python/releases/download/0.2.0/rules_python-0.2.0.tar.gz",
+            "https://github.com/bazelbuild/rules_python/releases/download/0.2.0/rules_python-0.2.0.tar.gz",
+        ],
     )
 
 def _rules_pkg():
@@ -40,11 +46,11 @@ def _rules_pkg():
     _maybe(
         http_archive,
         name = "rules_pkg",
-        sha256 = "6b5969a7acd7b60c02f816773b06fcf32fbe8ba0c7919ccdc2df4f8fb923804a",
         urls = [
-            "https://mirror.bazel.build/github.com/bazelbuild/rules_pkg/releases/download/0.3.0/rules_pkg-0.3.0.tar.gz",
-            "https://github.com/bazelbuild/rules_pkg/releases/download/0.3.0/rules_pkg-0.3.0.tar.gz",
+            "https://mirror.bazel.build/github.com/bazelbuild/rules_pkg/releases/download/0.4.0/rules_pkg-0.4.0.tar.gz",
+            "https://github.com/bazelbuild/rules_pkg/releases/download/0.4.0/rules_pkg-0.4.0.tar.gz",
         ],
+        sha256 = "038f1caa773a7e35b3663865ffb003169c6a71dc995e39bf4815792f385d837d",
     )
 
 def _rules_proto():
@@ -66,10 +72,10 @@ def _rules_go():
     _maybe(
         http_archive,
         name = "io_bazel_rules_go",
-        sha256 = "7c10271940c6bce577d51a075ae77728964db285dac0a46614a7934dc34303e6",
+        sha256 = "69de5c704a05ff37862f7e0f5534d4f479418afc21806c887db544a316f3cb6b",
         urls = [
-            "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.26.0/rules_go-v0.26.0.tar.gz",
-            "https://github.com/bazelbuild/rules_go/releases/download/v0.26.0/rules_go-v0.26.0.tar.gz",
+            "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.27.0/rules_go-v0.27.0.tar.gz",
+            "https://github.com/bazelbuild/rules_go/releases/download/v0.27.0/rules_go-v0.27.0.tar.gz",
         ],
     )
 
@@ -84,6 +90,44 @@ def _bazel_gazelle():
             "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
             "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
         ],
+    )
+
+def _rules_docker():
+    """rules_docker contains rules for building Docker images."""
+    # https://github.com/bazelbuild/rules_docker
+    _maybe(
+        http_archive,
+        name = "io_bazel_rules_docker",
+        sha256 = "59d5b42ac315e7eadffa944e86e90c2990110a1c8075f1cd145f487e999d22b3",
+        strip_prefix = "rules_docker-0.17.0",
+        urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v0.17.0/rules_docker-v0.17.0.tar.gz"],
+    )
+
+def _cacerts():
+    """CA certificates (for bundling with static binaries and Docker images)."""
+    # https://curl.haxx.se/docs/caextract.html
+    _maybe(
+        http_file,
+        name = "cacert",
+        downloaded_file_path = "cacert.pem",
+        sha256 = "533610ad2b004c1622a40622f86ced5e89762e1c0e4b3ae08b31b240d863e91f",
+        urls = ["https://curl.se/ca/cacert-2021-04-13.pem"],
+    )
+
+def _tini():
+    """A tini but valid init for containers."""
+    # https://github.com/krallin/tini/releases
+    _maybe(
+        http_file,
+        name = "tini",
+        sha256 = "93dcc18adc78c65a028a84799ecf8ad40c936fdfc5f2a57b1acda5a8117fa82c",
+        urls = ["https://github.com/krallin/tini/releases/download/v0.19.0/tini-amd64"],
+    )
+    _maybe(
+        http_file,
+        name = "tini-static",
+        sha256 = "c5b0666b4cb676901f90dfcb37106783c5fe2077b04590973b885950611b30ee",
+        urls = ["https://github.com/krallin/tini/releases/download/v0.19.0/tini-static-amd64"],
     )
 
 def _maybe(rule, name, **kwargs):

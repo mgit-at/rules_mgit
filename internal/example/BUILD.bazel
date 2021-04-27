@@ -1,5 +1,6 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
 load("@rules_pkg//:pkg.bzl", "pkg_deb", "pkg_tar")
+load("@io_bazel_rules_docker//container:container.bzl", "container_bundle", "container_image")
 
 go_library(
     name = "example_lib",
@@ -43,4 +44,43 @@ pkg_deb(
     package = "example",
     version = "1.0.0",
     visibility = ["//visibility:public"],
+)
+
+go_binary(
+    name = "pure",
+    embed = [":example_lib"],
+    pure = "on",
+    visibility = ["//visibility:public"],
+)
+
+pkg_tar(
+    name = "container_files",
+    files = {
+        ":pure": "/example",
+        "@tini-static//file": "/tini",
+        "@cacert//file": "/etc/ssl/certs/ca-certificates.crt",
+    },
+)
+
+container_image(
+    name = "container",
+    entrypoint = [
+        "/tini",
+        "/example",
+        "--",
+    ],
+    tars = [":container_files"],
+)
+
+container_bundle(
+    name = "bundle",
+    images = {
+        "docker.mgit.at/example:1.0.0": ":container",
+    },
+)
+
+pkg_tar(
+    name = "docker",
+    extension = "tar.gz",
+    deps = [":bundle.tar"],
 )
