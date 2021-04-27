@@ -5,7 +5,8 @@ load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 load("@io_bazel_rules_go//extras:embed_data_deps.bzl", "go_embed_data_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
-
+load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories="repositories")
+load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps="deps")
 
 def rules_mgit_setup():
     """Setup all rules_mgit dependencies."""
@@ -20,3 +21,5 @@ def rules_mgit_setup():
     )
     go_embed_data_dependencies()
     gazelle_dependencies()
+    container_repositories()
+    container_deps()

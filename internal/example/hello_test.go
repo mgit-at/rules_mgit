@@ -8,7 +8,7 @@ import (
 func TestHello(t *testing.T) {
 	buf := &bytes.Buffer{}
 	printHello(buf)
-	if want, got := "Hello rules_go!\n", buf.String(); want != got {
+	if want, got := "Hello rules_mgIT!\n", buf.String(); want != got {
 		t.Errorf("expected %q, got %q", want, got)
 	}
 }
