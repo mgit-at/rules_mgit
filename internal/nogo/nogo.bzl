@@ -4,4 +4,5 @@ def nogo_deps():
     deps = list(TOOLS_NOGO)
     deps.append("//internal/nogo/nogofmt:go_tool_library")
     deps.remove("@org_golang_x_tools//go/analysis/passes/shadow:go_tool_library")
+    deps.remove("@org_golang_x_tools//go/analysis/passes/pkgfact:go_tool_library")
     return deps
