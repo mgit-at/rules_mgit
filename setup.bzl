@@ -14,7 +14,7 @@ def rules_mgit_setup():
     go_rules_dependencies()
     go_register_toolchains(
         nogo = "@rules_mgit//internal/nogo",
-        version = "1.17",
+        version = "1.17.1",
     )
     go_embed_data_dependencies()
     gazelle_dependencies()
