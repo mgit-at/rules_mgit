@@ -1,17 +1,9 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_tool_library")
-
-go_tool_library(
-    name = "go_tool_library",
-    srcs = ["nogofmt.go"],
-    importpath = "mgit.at/rules_mgit/internal/nogo/nogofmt",
-    visibility = ["//visibility:public"],
-    deps = ["@org_golang_x_tools//go/analysis:go_tool_library"],
-)
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
-    name = "nogofmt",
+    name = "go_default_library",
     srcs = ["nogofmt.go"],
     importpath = "mgit.at/rules_go/internal/nogo/nogofmt",
-    visibility = ["//:__subpackages__"],
+    visibility = ["//visibility:public"],
     deps = ["@org_golang_x_tools//go/analysis:go_default_library"],
 )
