@@ -96,8 +96,8 @@ def _cacerts():
         http_file,
         name = "cacert",
         downloaded_file_path = "cacert.pem",
-        sha256 = "533610ad2b004c1622a40622f86ced5e89762e1c0e4b3ae08b31b240d863e91f",
-        urls = ["https://curl.se/ca/cacert-2021-04-13.pem"],
+        sha256 = "f524fc21859b776e18df01a87880efa198112214e13494275dbcbd9bcb71d976",
+        urls = ["https://curl.se/ca/cacert-2021-09-30.pem"],
     )
 
 def _tini():
