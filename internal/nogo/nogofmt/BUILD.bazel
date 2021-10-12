@@ -1,7 +1,7 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
-    name = "go_default_library",
+    name = "nogofmt",
     srcs = ["nogofmt.go"],
     importpath = "mgit.at/rules_go/internal/nogo/nogofmt",
     visibility = ["//visibility:public"],
