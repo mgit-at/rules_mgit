@@ -7,6 +7,7 @@ def rules_mgit_dependencies():
     _bazel_skylib()
     _rules_python()
     _rules_pkg()
+    _rules_protobuf()
     _rules_go()
     _bazel_gazelle()
     _rules_docker()
@@ -49,6 +50,20 @@ def _rules_pkg():
         urls = [
             "https://mirror.bazel.build/github.com/bazelbuild/rules_pkg/releases/download/0.5.1/rules_pkg-0.5.1.tar.gz",
             "https://github.com/bazelbuild/rules_pkg/releases/download/0.5.1/rules_pkg-0.5.1.tar.gz",
+        ],
+    )
+
+def _rules_protobuf():
+    """rules_protobuf contains rules for compiling Protocol Buffer specifications"""
+    # https://github.com/protocolbuffers/protobuf
+    _maybe(
+        http_archive,
+        name = "com_google_protobuf",
+        sha256 = "9111bf0b542b631165fadbd80aa60e7fb25b25311c532139ed2089d76ddf6dd7",
+        strip_prefix = "protobuf-3.18.1",
+        urls = [
+            #"https://mirror.bazel.build/github.com/protocolbuffers/protobuf/archive/v3.18.1.tar.gz",
+            "https://github.com/protocolbuffers/protobuf/archive/v3.18.1.tar.gz",
         ],
     )
 
