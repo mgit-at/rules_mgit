@@ -8,7 +8,7 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories="repositories")
 load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps="deps")
 
-def rules_mgit_setup():
+def rules_mgit_setup(stage2=True):
     """Setup all rules_mgit dependencies."""
     bazel_skylib_workspace()
     rules_pkg_dependencies()
@@ -18,6 +18,12 @@ def rules_mgit_setup():
         nogo = "@rules_mgit//internal/nogo",
         version = "1.17.1",
     )
+    if stage2:
+        rules_mgit_setup_stage2()
+
+def rules_mgit_setup_stage2():
+    """Setup all remaining rules_mgit dependencies. The repos listed here use Go packages internally and might
+    use different package versions by default."""
     go_embed_data_dependencies()
     gazelle_dependencies()
     container_repositories()
