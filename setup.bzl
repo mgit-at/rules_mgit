@@ -7,6 +7,7 @@ load("@io_bazel_rules_go//extras:embed_data_deps.bzl", "go_embed_data_dependenci
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories="repositories")
 load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps="deps")
+load("@rules_mgit//internal/nogo:staticcheck.bzl", "staticcheck_repositories")
 
 def rules_mgit_setup(stage2=True):
     """Setup all rules_mgit dependencies."""
@@ -24,6 +25,7 @@ def rules_mgit_setup(stage2=True):
 def rules_mgit_setup_stage2():
     """Setup all remaining rules_mgit dependencies. The repos listed here use Go packages internally and might
     use different package versions by default."""
+    staticcheck_repositories()
     go_embed_data_dependencies()
     gazelle_dependencies()
     container_repositories()

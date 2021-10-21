@@ -1,3 +1,4 @@
+// Package nogofmt ensures that all go code is formatted according to go fmt.
 package nogofmt
 
 import (
