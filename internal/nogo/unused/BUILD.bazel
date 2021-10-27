@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "unused",
+    srcs = ["unused.go"],
+    importpath = "mgit.at/rules_go/internal/nogo/unused",
+    visibility = ["//visibility:public"],
+    deps = ["@co_honnef_go_tools//unused:go_default_library"],
+)

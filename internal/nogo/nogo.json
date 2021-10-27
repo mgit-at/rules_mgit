@@ -919,6 +919,10 @@
       "exclude_files": {
         "external/": "external dependencies"
       }
+    },
+    "U1000": {
+      "exclude_files": {
+        "external/": "external dependencies"
+      }
     }
   }
-  
