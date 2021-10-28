@@ -3,7 +3,7 @@ load(":nogo.bzl", "nogo_deps")
 
 nogo(
     name = "mgit_nogo",
-    config = "@//internal/nogo:nogo.json",
+    config = "@rules_mgit//internal/nogo:nogo.json",
     visibility = ["//visibility:public"],
     deps = nogo_deps(),
 )
