@@ -16,7 +16,7 @@ def rules_mgit_setup(stage2=True):
     protobuf_deps()
     go_rules_dependencies()
     go_register_toolchains(
-        nogo = "@//internal/nogo:mgit_nogo",
+        nogo = "@rules_mgit//internal/nogo:mgit_nogo",
         version = "1.17.1",
     )
     if stage2:
