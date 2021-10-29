@@ -216,7 +216,8 @@
   },
   "QF1008": {
     "exclude_files": {
-      "external/": "external dependencies"
+      "external/": "external dependencies",
+      "\\.pb\\.go$": "generated protobuf files"
     }
   },
   "QF1009": {
