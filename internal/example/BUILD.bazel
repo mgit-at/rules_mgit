@@ -3,15 +3,18 @@ load("@rules_pkg//:pkg.bzl", "pkg_deb", "pkg_tar")
 load("@io_bazel_rules_docker//container:container.bzl", "container_bundle", "container_image")
 
 go_library(
-    name = "example_lib",
+    name = "go_default_library",
     srcs = ["hello.go"],
     importpath = "mgit.at/rules_go/internal/example",
     visibility = ["//visibility:private"],
+    deps = [
+        "//internal/example/lib:go_default_library",
+    ],
 )
 
 go_binary(
     name = "example",
-    embed = [":example_lib"],
+    embed = [":go_default_library"],
     visibility = ["//:__subpackages__"],
 )
 

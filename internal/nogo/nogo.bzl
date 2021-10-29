@@ -8,6 +8,5 @@ def nogo_deps():
     sets.insert(deps, "//internal/nogo/unused")
     sets.remove(deps, "@org_golang_x_tools//go/analysis/passes/shadow:go_default_library")
     sets.remove(deps, "@org_golang_x_tools//go/analysis/passes/pkgfact:go_default_library")
-    sets.remove(deps, "@com_github_sluongng_staticcheck_codegen//_gen/st1000:go_default_library")
     # print(sets.str(deps))
     return sets.to_list(deps)

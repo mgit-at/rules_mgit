@@ -1,17 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"io"
 	"os"
-	"runtime"
+
+	"mgit.at/rules_go/internal/example/lib"
 )
 
 func main() {
-	printHello(os.Stdout)
-}
-
-func printHello(w io.Writer) {
-	fmt.Fprintln(w, "Hello rules_mgIT!")
-	fmt.Fprintln(w, "go_version:", runtime.Version())
+	lib.PrintHello(os.Stdout)
 }
