@@ -833,6 +833,7 @@
   "ST1000": {
     "exclude_files": {
       "external/": "external dependencies",
+      "\\.pb\\.go$": "generated protobuf files",
       "_empty\\.go": "generated file"
     }
   },
