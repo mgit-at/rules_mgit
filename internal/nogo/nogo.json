@@ -833,7 +833,6 @@
   "ST1000": {
     "exclude_files": {
       "external/": "external dependencies",
-      ".*": "disable linter"
     }
   },
   "ST1001": {
