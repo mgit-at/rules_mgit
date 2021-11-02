@@ -22,6 +22,10 @@ go_test(
     name = "example_test",
     size = "small",
     srcs = ["hello_test.go"],
+    embed = [":go_default_library"],
+    deps = [
+        "//internal/example/lib:go_default_library",
+    ],
 )
 
 pkg_tar(
@@ -50,7 +54,7 @@ pkg_deb(
 
 go_binary(
     name = "pure",
-    embed = [":example_lib"],
+    embed = [":go_default_library"],
     pure = "on",
     visibility = ["//visibility:public"],
 )

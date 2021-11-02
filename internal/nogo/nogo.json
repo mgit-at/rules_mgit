@@ -832,7 +832,8 @@
   },
   "ST1000": {
     "exclude_files": {
-      "external/": "external dependencies"
+      "external/": "external dependencies",
+      "_empty\\.go": "generated file"
     }
   },
   "ST1001": {
