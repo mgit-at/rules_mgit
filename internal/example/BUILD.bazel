@@ -22,7 +22,6 @@ go_test(
     name = "example_test",
     size = "small",
     srcs = ["hello_test.go"],
-    embed = [":example_lib"],
 )
 
 pkg_tar(
