@@ -832,7 +832,7 @@
   },
   "ST1000": {
     "exclude_files": {
-      "external/": "external dependencies",
+      "external/": "external dependencies"
     }
   },
   "ST1001": {
