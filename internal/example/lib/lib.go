@@ -1,3 +1,4 @@
+// Package lib is an example library
 package lib
 
 import (
