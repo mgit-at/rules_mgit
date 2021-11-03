@@ -502,7 +502,8 @@
   },
   "SA1019": {
     "exclude_files": {
-      "external/": "external dependencies"
+      "external/": "external dependencies",
+      "openpgp\\.go$": "openpgp"
     }
   },
   "SA1020": {
