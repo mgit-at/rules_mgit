@@ -925,7 +925,8 @@
   "unused": {
     "exclude_files": {
       "external/": "external dependencies",
-      "\\.pb\\.go$": "generated protobuf files"
+      "\\.pb\\.go$": "generated protobuf files", 
+      "_cgo_gotypes\\.go$": "generated cgo files"
     }
   }
 }
