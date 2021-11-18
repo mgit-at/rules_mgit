@@ -835,8 +835,7 @@
     "exclude_files": {
       "external/": "external dependencies",
       "\\.pb\\.go$": "generated protobuf files",
-      "_empty\\.go": "generated file",
-      ".*": "ignore everything"
+      "_empty\\.go": "generated file"
     }
   },
   "ST1001": {
@@ -927,7 +926,7 @@
   "unused": {
     "exclude_files": {
       "external/": "external dependencies",
-      "\\.pb\\.go$": "generated protobuf files", 
+      "\\.pb\\.go$": "generated protobuf files",
       "_cgo_gotypes\\.go$": "generated cgo files"
     }
   }
