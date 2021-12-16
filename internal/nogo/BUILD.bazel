@@ -7,3 +7,8 @@ nogo(
     visibility = ["//visibility:public"],
     deps = nogo_deps(),
 )
+
+exports_files(
+    ["nogo.json"],
+    ["//visibility:public"],
+)

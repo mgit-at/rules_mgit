@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "nogomerge_lib",
+    srcs = ["main.go"],
+    importpath = "mgit.at/rules_go/internal/nogo/nogomerge",
+    visibility = ["//visibility:public"],
+)
+
+go_binary(
+    name = "nogo_merge",
+    embed = [":nogomerge_lib"],
+    visibility = ["//visibility:public"],
+)
