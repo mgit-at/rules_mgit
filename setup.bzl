@@ -9,14 +9,14 @@ load("@io_bazel_rules_docker//repositories:repositories.bzl", container_reposito
 load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps="deps")
 load("@rules_mgit//internal/nogo:staticcheck.bzl", "staticcheck_repositories")
 
-def rules_mgit_setup(stage2=True):
+def rules_mgit_setup(stage2=True, nogo="@rules_mgit//internal/nogo:mgit_nogo"):
     """Setup all rules_mgit dependencies."""
     bazel_skylib_workspace()
     rules_pkg_dependencies()
     protobuf_deps()
     go_rules_dependencies()
     go_register_toolchains(
-        nogo = "@rules_mgit//internal/nogo:mgit_nogo",
+        nogo = nogo,
         version = "1.17.1",
     )
     if stage2:
