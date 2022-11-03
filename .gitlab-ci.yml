@@ -1,4 +1,8 @@
 ---
+default:
+  tags:
+  - k8s-mgit-bazel
+
 stages:
   - build
   - test
@@ -7,14 +11,8 @@ build:
   stage: build
   script:
     - bazel build --keep_going //...
-  tags:
-    - mgit
-    - bazel
 
 test:
   stage: test
   script:
     - bazel test --keep_going //...
-  tags:
-    - mgit
-    - bazel
