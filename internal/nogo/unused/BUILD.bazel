@@ -6,7 +6,7 @@ go_library(
     importpath = "mgit.at/rules_go/internal/nogo/unused",
     visibility = ["//visibility:public"],
     deps = [
-        "@co_honnef_go_tools//unused:go_default_library",
-        "@org_golang_x_tools//go/analysis:go_default_library",
+        "@co_honnef_go_tools//unused",
+        "@org_golang_x_tools//go/analysis",
     ],
 )

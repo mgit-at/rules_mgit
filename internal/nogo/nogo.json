@@ -235,6 +235,11 @@
       "external/": "external dependencies"
     }
   },
+  "QF1012": {
+    "exclude_files": {
+      "external/": "external dependencies"
+    }
+  },
   "S1000": {
     "exclude_files": {
       "external/": "external dependencies"

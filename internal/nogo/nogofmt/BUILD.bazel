@@ -5,5 +5,5 @@ go_library(
     srcs = ["nogofmt.go"],
     importpath = "mgit.at/rules_go/internal/nogo/nogofmt",
     visibility = ["//visibility:public"],
-    deps = ["@org_golang_x_tools//go/analysis:go_default_library"],
+    deps = ["@org_golang_x_tools//go/analysis"],
 )
