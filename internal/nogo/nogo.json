@@ -836,6 +836,11 @@
       "external/": "external dependencies"
     }
   },
+  "SA9008": {
+    "exclude_files": {
+      "external/": "external dependencies"
+    }
+  },
   "ST1000": {
     "exclude_files": {
       "external/": "external dependencies",
