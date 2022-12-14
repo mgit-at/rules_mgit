@@ -13,9 +13,9 @@ def rules_mgit_setup(stage2=True, nogo="@rules_mgit//internal/nogo:mgit_nogo"):
     """Setup all rules_mgit dependencies."""
     bazel_skylib_workspace()
     rules_pkg_dependencies()
-    staticcheck_repositories()
     protobuf_deps()
     go_rules_dependencies()
+    staticcheck_repositories()
     go_register_toolchains(
         nogo = nogo,
         version = "1.19.3",
