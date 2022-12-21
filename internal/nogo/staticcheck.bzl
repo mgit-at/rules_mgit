@@ -6,8 +6,8 @@ def staticcheck_repositories():
         go_repository,
         name = "org_golang_x_exp_typeparams",
         importpath = "golang.org/x/exp/typeparams",
-        sum = "h1:qyrTQ++p1afMkO4DPEeLGq/3oTsdlvdH4vqZUBWzUKM=",
-        version = "v0.0.0-20220218215828-6cf2b201936e",
+        sum = "h1:WumQqbro49zP5y7xSPDDdBZBwiUrWNZ7ZbKUQst9RiA=",
+        version = "v0.0.0-20221217163422-3c43f8badb15",
     )
     _maybe(
         go_repository,
@@ -26,6 +26,7 @@ def staticcheck_repositories():
         importpath = "honnef.co/go/tools",
         sum = "h1:oDx7VAwstgpYpb3wv0oxiZlxY+foCpRAwY7Vk6XpAgA=",
         version = "v0.3.3",
+        build_external = "external",
     )
     _maybe(
         http_archive,
