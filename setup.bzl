@@ -18,7 +18,7 @@ def rules_mgit_setup(stage2=True, nogo="@rules_mgit//internal/nogo:mgit_nogo"):
     staticcheck_repositories()
     go_register_toolchains(
         nogo = nogo,
-        version = "1.19.3",
+        version = "1.20",
     )
     if stage2:
         rules_mgit_setup_stage2()
