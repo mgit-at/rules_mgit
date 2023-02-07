@@ -3,7 +3,6 @@ load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
-load("@io_bazel_rules_go//extras:embed_data_deps.bzl", "go_embed_data_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories="repositories")
 load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps="deps")
@@ -27,7 +26,6 @@ def rules_mgit_setup_stage2():
     """Setup all remaining rules_mgit dependencies. The repos listed here use Go packages internally and might
     use different package versions by default."""
     staticcheck_repositories()
-    go_embed_data_dependencies()
     gazelle_dependencies()
     container_repositories()
     container_deps()
