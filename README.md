@@ -33,11 +33,13 @@ http_archive(
 load("@rules_mgit//:deps.bzl", "rules_mgit_dependencies")
 rules_mgit_dependencies()
 
-load("@rules_mgit//:setup.bzl", "rules_mgit_setup")
-rules_mgit_setup()
+load("@rules_mgit//:setup.bzl", "rules_mgit_setup", "rules_mgit_setup_stage2")
+rules_mgit_setup(stage2=False)
 
 load("//:go_deps.bzl", "go_repositories")
 go_repositories()
+
+rules_mgit_setup_stage2()
 ```
 
 The ``go_deps.bzl`` is updated by Gazelle and might look like this at the beginning:
